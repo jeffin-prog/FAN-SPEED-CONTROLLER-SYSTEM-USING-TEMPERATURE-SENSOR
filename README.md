@@ -1,24 +1,24 @@
-
 # FAN-SPEED-CONTROLLER-SYSTEM-USING-TEMPERATURE-SENSOR
 # EXP 1(A) FAN SPEED CONTROLLER SYSTEM USING TEMPERATURE SENSOR
 
 # Aim:
+```
 	To measure the Temperature using DHT11/DHT22/TMP36  sensor with Arduino UNO Board/ESP-32 using Tinker CAD.
-
+```
 # Hardware / Software Tools required:
+```
 	PC/ Laptop with Internet connection
     Tinker CAD tool (Online)
 	Arduino UNO Board/ESP-32
 	Temperature Sensor (DHT11/DHT22/TMP36)
-
+```
 # Circuit Diagram:
 
----
-To upload
---
+<img width="1910" height="1020" alt="Screenshot 2025-09-02 141836" src="https://github.com/user-attachments/assets/ff599232-662d-4bec-92b0-8477cf148586" />
+
 
 # Procedure // Modify the procedure based on your circuit
-
+```
 Step 1: Set Up the Tinkercad Environment
 1.	Log in to Tinkercad: Open Tinkercad in your web browser and log in to your account.
 2.	Create a New Circuit: In the Tinkercad dashboard, click on "Circuits" and then select "Create New Circuit."
@@ -53,16 +53,49 @@ Step 6: Troubleshoot and Refine
 Step 7: Save Your Work
 1.	Stop Simulation: Click "Stop Simulation" to end the simulation.
 2.	Save the Circuit: Click "Save" to keep your circuit design and code for future use.
-
+```
 
 # Program
 
----
-To upload
---
+```
+
+void setup()
+{
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+  pinMode(A0,INPUT);
+  Serial.begin(9600);
+
+}
+
+void loop()
+{
+  float value=analogRead(A0);
+  float temperatureC=((((value*5)/1023)-0.5)*100);
+  Serial.println("temperature");
+  Serial.println(temperatureC);
+  
+  if(temperatureC > 20)
+  {
+    digitalWrite(12,HIGH);
+    digitalWrite(13,LOW);
+  }
+  else
+  {
+    digitalWrite(12,LOW);
+    digitalWrite(13,LOW);
+  }
+}
+```
 
 # Result
 
----
-To upload
---
+
+<img width="1911" height="1019" alt="Screenshot 2025-09-02 143145" src="https://github.com/user-attachments/assets/ef83f0cd-c6a9-4140-a621-9da2eca9e07b" />
+
+
+
+
+https://github.com/user-attachments/assets/dc86ecd0-465b-41a6-b840-3bdd7f3e1d5a
+
+Thus Fan speed controller using temperature sensor is implemented using Tinkercad
